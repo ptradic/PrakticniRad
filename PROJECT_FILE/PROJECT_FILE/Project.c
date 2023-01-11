@@ -7,7 +7,6 @@
 typedef struct _BinarySearchTree* Position;
 typedef struct _BinarySearchTree {
 	char username[MAX_SIZE];
-	char email[MAX_SIZE];
 	char password[MAX_SIZE];
 	Position left;
 	Position right;
@@ -17,14 +16,13 @@ int LoadAccountsFromFile(Position head);
 int AddAccountToFile(Position head);
 Position AllocateMemory(Position current);
 int FindElementByUser(Position current, char* username);
-int FindElementMail(Position current, char* email);
 Position LogIn(Position head);
 Position SortedInsert(Position current, Position newElement);
 int INorderPrint(Position current);
 //int DeleteAll(Position current);
 
 int main() {
-	BinarySearchTree headAccount = { .username = "",.email = "",.password = "",.right = NULL,.left=NULL };
+	BinarySearchTree headAccount = { .username = "",.password = "",.right = NULL,.left=NULL };
 	Position head = &headAccount;
 	Position loggedIn = NULL;
 	LoadAccountsFromFile(head); //dodaje u listu racune iz filea 
@@ -41,7 +39,7 @@ int main() {
 			loggedIn = LogIn(head);
 			if (loggedIn != NULL) {
 				printf("You're Logged into an account with following credentials:\n");
-				printf("%s %s %s\n", loggedIn->username, loggedIn->email, loggedIn->password);
+				printf("%s %s\n", loggedIn->username, loggedIn->password);
 				//RESERVATION_MENU();
 			} //printfovi samo da se vidi da je na tocnom useru i sad ulazi u glavni meni di bi tribali rezervirat i ostalo 
 			break;
@@ -68,8 +66,6 @@ int LoadAccountsFromFile(Position head) { //printfovi u whileu samo da se trenut
 		newElement = AllocateMemory(newElement);
 		fscanf(fp, "%s", newElement->username);
 		printf("%s ", newElement->username);
-		fscanf(fp, "%s", newElement->email);
-		printf("%s ", newElement->email);
 		fscanf(fp, "%s", newElement->password);
 		printf("%s ", newElement->password);
 		if (strlen(newElement->username) > 0) { //ovi if-else samo provjerava da je ustvari skupia zbog praznih redova ako nije free ovo sta smo alocirali gore
@@ -114,7 +110,6 @@ Position AllocateMemory(Position current) {
 		perror("Error Allocating memory! ");
 		return NULL;
 	}
-	strcpy(current->email, "");
 	current->left = NULL;
 	current->right = NULL;
 	strcpy(current->password, "");
@@ -123,7 +118,6 @@ Position AllocateMemory(Position current) {
 }
 int AddAccountToFile(Position head) { //dodavanje novog racuna u file i stablo s provjeravama zauzetosti maila i usernamea 
 	char username[MAX_SIZE] = { 0 };
-	char email[MAX_SIZE] = { 0 };
 	char password[MAX_SIZE] = { 0 };
 	int status = 0;
 	FILE* fp = NULL;
@@ -136,19 +130,10 @@ int AddAccountToFile(Position head) { //dodavanje novog racuna u file i stablo s
 		scanf(" %s", username);
 		status = FindElementByUser(head, username);
 	}
-	printf("\nUnesi email adresu: ");
-	scanf(" %s", email);
-	status = FindElementMail(head, email);
-	while (status != 0) {
-		printf("Ponovi unos email adrese: ");
-		scanf(" %s", email);
-		status = FindElementMail(head, email);
-	}
-	printf("Unesi lozinku ime: ");
+	printf("Unesi lozinku: ");
 	scanf(" %s", password);
-	AddNewAccountToList(head, username, email, password);
-	fprintf(fp, " %s", username);
-	fprintf(fp, " %s", email);
+	AddNewAccountToList(head, username, password);
+	fprintf(fp, "%s", username);
 	fprintf(fp, " %s\n", password);
 	fclose(fp);
 	return EXIT_SUCCESS;
@@ -169,26 +154,10 @@ int FindElementByUser(Position current,char* username) { //provjerava jel zauzet
 	else if (strcmp(current->username, username) > 0)
 		FindElementByUser(current->left, username);
 }
-int FindElementMail(Position current, char* email) { //provjerava jel zauzet mail kojim pokusajemo registrirat 
-	if (NULL == current)
-	{
-		return EXIT_SUCCESS;
-	}
-	if (strcmp(current->email, email) == 0)
-	{
-		printf("email already in use!\n");
-		return -1;
-	}
-	else if (strcmp(current->email, email) < 0)
-		FindElementMail(current->right, email);
 
-	else if (strcmp(current->email, email) > 0)
-		FindElementMail(current->left, email);
-}
-int AddNewAccountToList(Position head, char* username, char* email, char* password) {
+int AddNewAccountToList(Position head, char* username, char* password) {
 	Position newElement = NULL;
 	newElement = AllocateMemory(newElement);
-	strcpy(newElement->email, email);
 	strcpy(newElement->username, username);
 	strcpy(newElement->password, password);
 	newElement=SortedInsert(head, newElement);

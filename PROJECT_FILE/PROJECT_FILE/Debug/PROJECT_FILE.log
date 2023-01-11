@@ -1,9 +1,8 @@
 ﻿  Project.c
-c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(75): warning C4013: 'strlen' undefined; assuming extern returning int
-c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(90): warning C4013: 'strcmp' undefined; assuming extern returning int
-c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(117): warning C4013: 'strcpy' undefined; assuming extern returning int
-c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(149): warning C4013: 'AddNewAccountToList' undefined; assuming extern returning int
-c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(171): warning C4715: 'FindElementByUser': not all control paths return a value
-c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(187): warning C4715: 'FindElementMail': not all control paths return a value
-c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(212): warning C4715: 'FindLoginUser': not all control paths return a value
+c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(71): warning C4013: 'strlen' undefined; assuming extern returning int
+c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(86): warning C4013: 'strcmp' undefined; assuming extern returning int
+c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(115): warning C4013: 'strcpy' undefined; assuming extern returning int
+c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(135): warning C4013: 'AddNewAccountToList' undefined; assuming extern returning int
+c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(156): warning C4715: 'FindElementByUser': not all control paths return a value
+c:\users\lolcrokn\source\repos\strukture repos\project_file\project_file\project.c(181): warning C4715: 'FindLoginUser': not all control paths return a value
   PROJECT_FILE.vcxproj -> C:\Users\LoLcRoKN\source\repos\strukture repos\PROJECT_FILE\Debug\PROJECT_FILE.exe
