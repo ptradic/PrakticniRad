@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #define MAX_LINE 1024
 #define MAX_SIZE 128
+#define NUMBER_OF_ROUTES 6	
 
 typedef struct _BinarySearchTree* Position;
 typedef struct _BinarySearchTree {
@@ -12,6 +13,16 @@ typedef struct _BinarySearchTree {
 	Position right;
 }BinarySearchTree;
 
+
+//racuna mozda umisto nizova stavljat ovako u listu al nije toliko prakticnije pa nez 
+/*typedef struct _BusList* BusPosition;
+typedef struct _BusList {
+	char route[10];
+	int price;
+	char filename[10];
+	BusPosition next;
+}BusList;*/
+
 int LoadAccountsFromFile(Position head);
 int AddAccountToFile(Position head);
 Position AllocateMemory(Position current);
@@ -19,6 +30,8 @@ int FindElementByUser(Position current, char* username);
 Position LogIn(Position head);
 Position SortedInsert(Position current, Position newElement);
 int INorderPrint(Position current);
+int ReservationMenu(Position loggedIn);
+int SeatFile(char* filename);
 //int DeleteAll(Position current);
 
 int main() {
@@ -40,7 +53,7 @@ int main() {
 			if (loggedIn != NULL) {
 				printf("You're Logged into an account with following credentials:\n");
 				printf("%s %s\n", loggedIn->username, loggedIn->password);
-				//RESERVATION_MENU();
+				ReservationMenu(loggedIn);
 			} //printfovi samo da se vidi da je na tocnom useru i sad ulazi u glavni meni di bi tribali rezervirat i ostalo 
 			break;
 		case '0':
@@ -53,12 +66,63 @@ int main() {
 	//DeleteAll(head); breaka program ovo triban jos vidit zasto
 	return EXIT_SUCCESS;
 }
+int ReservationMenu(Position loggedIn) {
+	FILE* fp = NULL;
+	fp = fopen("autobusi.txt", "r");
+	char BusArray[NUMBER_OF_ROUTES][10] = { 0 };
+	char filetemp[NUMBER_OF_ROUTES][10] = { 0 };
+	int i = 0;
+	int choice=0;
+	if (!fp) {
+		perror("Error opening bus file!");
+		return -1;
+	}
+	while (!feof(fp)) {
+		fscanf(fp, "%s %s", BusArray[i], filetemp[i]);
+		i++;
+		//MakeList(temp, filetemp);
+	}
+	fclose(fp);
+	do { 
+		for (int i = 0; i < NUMBER_OF_ROUTES; i++) {
+			printf("%d %s %s\n",i+1, BusArray[i], filetemp[i]); //samo za pracenje da je dobro zapisano
+		}
+		printf("Choose your route or press 0 to exit: \n");
+		scanf(" %d", &choice);
+		if (choice == 0) {
+			printf("Exited to main menu!\n");
+			break;
+		}
+		if (choice <= NUMBER_OF_ROUTES ) {
+			SeatFile(filetemp[choice - 1]); //salje ime filea odabrane rute 
+		}
+		else {
+			printf("Wrong input!\n");
+		}
+	} while (choice != 0);
+
+	return EXIT_SUCCESS;
+}
+int SeatFile(char* filename) {
+	FILE* fp = NULL;
+	fp = fopen(filename, "r");
+	char temp[20] = { 0 };
+	int numberOfSeats = 0;
+	fscanf(fp, " %d", &numberOfSeats);
+	//sad array s statusom sjedalica napravit i onda iza toga odabir stolice, mijenjanje statusa u filu itd.
+	while (!feof(fp)) {
+		fscanf(fp, " %s",temp);
+		printf(" %s", temp); //samo za provjeravanje da normalno cita 
+	}
+	puts("\n");
+	fclose(fp);
+	return EXIT_SUCCESS;
+}
 int LoadAccountsFromFile(Position head) { //printfovi u whileu samo da se trenutno lakse prati sta se upisuje 
-	char buffer[MAX_LINE] = { 0 };
 	FILE* fp = NULL;
 	fp = fopen("racuni.txt", "r");
 	if (!fp) {
-		perror("Error opening file!");
+		perror("Error opening account file!");
 		return -1;
 	}
 	while (!feof(fp)) {
