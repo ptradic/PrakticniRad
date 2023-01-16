@@ -1,0 +1,9 @@
+﻿  LogIn.c
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECT_FILE\PROJECT_FILE\LogIn.c(23,13): warning C4013: 'strlen' undefined; assuming extern returning int
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECT_FILE\PROJECT_FILE\LogIn.c(66,8): warning C4013: 'strcpy' undefined; assuming extern returning int
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECT_FILE\PROJECT_FILE\LogIn.c(76,12): warning C4013: 'strcmp' undefined; assuming extern returning int
+  Main.c
+  Generating Code...
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECT_FILE\PROJECT_FILE\LogIn.c(173): warning C4715: 'FindLoginUser': not all control paths return a value
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECT_FILE\PROJECT_FILE\LogIn.c(86): warning C4715: 'FindElementByUser': not all control paths return a value
+  PROJECT_FILE.vcxproj -> C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECT_FILE\x64\Debug\PROJECT_FILE.exe
