@@ -24,27 +24,25 @@ int Insert(SeatPosition Head, char* filename) {
 	}
 	while (!feof(fp)) {
 
-		fscanf(fp, " %s %s", SeatName, SeatState);
+		if (fscanf(fp, " %s %s", SeatName, SeatState) == 2) {
 
-		while (P->Next != NULL) {
-			P = P->Next;
+
+			while (P->Next != NULL) {
+				P = P->Next;
+			}
+			Q = (SeatPosition)malloc(sizeof(struct Seat));
+
+			if (Q == NULL) {
+				printf("Allocate error!\r\n");
+				return PROGRAM_ERROR;
+			}
+			strcpy(Q->SeatName, SeatName);
+			strcpy(Q->SeatState, SeatState);
+
+			P->Next = Q;
+			Q->Next = NULL;
 		}
-
-		Q = (SeatPosition)malloc(sizeof(struct Seat));
-
-		if (Q == NULL) {
-			printf("Allocate error!\r\n");
-			return PROGRAM_ERROR;
-		}
-
-		strcpy(P->SeatName,SeatName);
-		strcpy(P->SeatState,SeatState);
-
-		P->Next = Q;
-		Q->Next = NULL;
 	}
-
-
 	fclose(fp);
 	return EXIT_SUCCESS;
 }

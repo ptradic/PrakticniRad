@@ -91,7 +91,7 @@ int ReservationMenu(Position loggedIn) {
 		if (choice <= NUMBER_OF_ROUTES) {
 			Insert(head, filetemp[choice - 1]); //napravi listu 
 			while (temp->Next != NULL) { //isprinta sjedala 
-				printf("%s %s ", temp->SeatName, temp->SeatState);
+				printf("%s %s ", temp->Next->SeatName, temp->Next->SeatState);
 				temp = temp->Next;
 				counter++;
 				if (counter % 4 == 0) {
@@ -105,7 +105,7 @@ int ReservationMenu(Position loggedIn) {
 			}
 			printf("\n New status: \n"); //samo provjera da je dobro zauzeto 
 			while (head->Next != NULL) {
-				printf("%s %s ", head->SeatName, head->SeatState);
+				printf("%s %s ", head->Next->SeatName, head->Next->SeatState);
 				head = head->Next;
 				counter++;
 				if (counter % 4 == 0) {
@@ -129,7 +129,7 @@ int RewriteFile(SeatPosition head, char* filename) {
 		return -1;
 	}
 	while (head->Next != NULL) {
-		fprintf(fp, "%s %s ", head->SeatName, head->SeatState);
+		fprintf(fp, "%s %s ", head->Next->SeatName, head->Next->SeatState);
 		head = head->Next;
 		counter++;
 		if (counter % 4 == 0) {
@@ -140,7 +140,7 @@ int RewriteFile(SeatPosition head, char* filename) {
 	return EXIT_SUCCESS;
 }
 int TakeSeat(SeatPosition head, char* SeatChoice,Position loggedIn) {
-	while (head->Next != NULL) {
+	while (head != NULL) {
 		if (strcmp(head->SeatName, SeatChoice) == 0 && strcmp(head->SeatState, "<Empty>") == 0) {
 			strcpy(head->SeatState, loggedIn->username);
 			printf("Seat is available and is now yours!\n");
