@@ -1,6 +1,0 @@
-st-zg StZg.txt
-st-ri StRi.txt
-st-du StDu.txt
-st-zd StZd.txt
-zg-st ZgSt.txt
-zg-ri ZgRi.txt
