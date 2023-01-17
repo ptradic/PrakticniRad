@@ -8,3 +8,5 @@ typedef struct Seat {
 }Seat;
 
 int Insert(SeatPosition Head,char* filename);
+//int RewriteFile(SeatPosition head, char* filename);
+//int TakeSeat(SeatPosition head, char* SeatChoice, Position loggedIn);

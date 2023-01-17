@@ -1,5 +1,6 @@
-#include "Seat.h"
 #define _CRT_SECURE_NO_WARNINGS 
+#include "Seat.h"
+#include "LogIn.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,4 +46,39 @@ int Insert(SeatPosition Head, char* filename) {
 	}
 	fclose(fp);
 	return EXIT_SUCCESS;
+}
+
+int RewriteFile(SeatPosition head, char* filename) {
+	FILE* fp = NULL;
+	fp = fopen(filename, "w+");
+	int counter = 0;
+	if (NULL == fp) {
+		perror("Error opening file!");
+		return -1;
+	}
+	while (head->Next != NULL) {
+		fprintf(fp, "%s %s ", head->Next->SeatName, head->Next->SeatState);
+		head = head->Next;
+		counter++;
+		if (counter % 4 == 0) {
+			fprintf(fp, "\n");
+		}
+	}
+	fclose(fp);
+	return EXIT_SUCCESS;
+}
+
+int TakeSeat(SeatPosition head, char* SeatChoice, Position loggedIn) {
+	while (head != NULL) {
+		if (strcmp(head->SeatName, SeatChoice) == 0 && strcmp(head->SeatState, "<Empty>") == 0) {
+			strcpy(head->SeatState, loggedIn->username);
+			printf("Seat is available and is now yours!\n");
+			return EXIT_SUCCESS;
+		}
+		else {
+			head = head->Next;
+		}
+	}
+	printf("\nThat seat is not available!\n");
+	return -2;
 }

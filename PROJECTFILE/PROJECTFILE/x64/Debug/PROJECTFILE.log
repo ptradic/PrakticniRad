@@ -1,0 +1,6 @@
+﻿  Main.c
+C:\Users\Pjero\Desktop\Main2\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(99,16): warning C4013: 'TakeSeat' undefined; assuming extern returning int
+C:\Users\Pjero\Desktop\Main2\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(100,16): warning C4013: 'RewriteFile' undefined; assuming extern returning int
+  Seat.c
+  Generating Code...
+  PROJECTFILE.vcxproj -> C:\Users\Pjero\Desktop\Main2\PrakticniRad\PROJECTFILE\x64\Debug\PROJECTFILE.exe

@@ -1,5 +1,5 @@
-#include "LogIn.h"
 #define _CRT_SECURE_NO_WARNINGS
+#include "LogIn.h"
 
 #include<stdio.h>
 #include<stdlib.h>
