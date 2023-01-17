@@ -1,0 +1,6 @@
+﻿  Main.c
+C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(103,16): warning C4013: 'TakeSeat' undefined; assuming extern returning int
+C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(104,16): warning C4013: 'RewriteFile' undefined; assuming extern returning int
+C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(144,13): warning C4013: 'strcmp' undefined; assuming extern returning int
+C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(145,10): warning C4013: 'strcpy' undefined; assuming extern returning int
+  PROJECTFILE.vcxproj -> C:\Users\Puizina\source\repos\PROJECTFILE\Debug\PROJECTFILE.exe
