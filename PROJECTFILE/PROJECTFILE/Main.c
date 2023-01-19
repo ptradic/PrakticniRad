@@ -60,12 +60,8 @@ int ReservationMenu(Position loggedIn) {
 	int choice = 0;
 	Seat SeatHead = { .SeatName = "",.SeatState = "" ,.Next = NULL };
 	SeatPosition head= &SeatHead;
-	int counter = 0;
 	char SeatChoice[5] = { 0 };
-	SeatPosition temp = head;
-	SeatPosition tempDelete = head;
-	int price = 0;
-	int success = 0;
+	float price = 0;
 	if (!fp) {
 		perror("Error opening bus file!");
 		return -1;

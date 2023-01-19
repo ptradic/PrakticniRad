@@ -1,4 +1,4 @@
 ﻿  Main.c
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(130,13): warning C4013: 'strcmp' undefined; assuming extern returning int
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(131,10): warning C4013: 'strcpy' undefined; assuming extern returning int
+C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(126,13): warning C4013: 'strcmp' undefined; assuming extern returning int
+C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(127,10): warning C4013: 'strcpy' undefined; assuming extern returning int
   PROJECTFILE.vcxproj -> C:\Users\Puizina\source\repos\PROJECTFILE\Debug\PROJECTFILE.exe
