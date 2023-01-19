@@ -8,22 +8,12 @@
 #define NUMBER_OF_ROUTES 6	
 
 
-//racuna mozda umisto nizova stavljat ovako u listu al nije toliko prakticnije pa nez 
-/*typedef struct _BusList* BusPosition;
-typedef struct _BusList {
-	char route[10];
-	int price;
-	char filename[10];
-	BusPosition next;
-}BusList;*/
-
 int ReservationMenu(Position loggedIn);
 int RewriteFile(SeatPosition head, char* filename);
 int TakeSeat(SeatPosition head, char* SeatChoice, Position loggedIn);
 int PrintSeat(SeatPosition temp);
 float percentageFull(SeatPosition head);
-//int FreeList(SeatPosition head);
-//int SeatFile(char* filename);
+int FreeList(SeatPosition head);
 int DeleteAll(Position current);
 
 int main() {
@@ -73,6 +63,8 @@ int ReservationMenu(Position loggedIn) {
 	int counter = 0;
 	char SeatChoice[5] = { 0 };
 	SeatPosition temp = head;
+	SeatPosition tempDelete = head;
+	int price = 0;
 	int success = 0;
 	if (!fp) {
 		perror("Error opening bus file!");
@@ -95,29 +87,16 @@ int ReservationMenu(Position loggedIn) {
 		}
 		if (choice <= NUMBER_OF_ROUTES) {
 			Insert(head, filetemp[choice - 1]); //napravi listu 
-			printf("This bus is %.2f percent occupied!\n", percentageFull(temp->Next)); //samo testiranje za mozda koristenje posli u admin-view i dizanju cijena
-			while (temp->Next != NULL) { //isprinta sjedala 
-				printf("%s %s ", temp->Next->SeatName, temp->Next->SeatState);
-				temp = temp->Next;
-				counter++;
-				if (counter % 4 == 0) {
-					printf("\n");
-				}
-			}
+			printf("This bus is %.2f percent occupied!\n", percentageFull(head->Next)); //samo testiranje za mozda koristenje posli u admin-view i dizanju cijena
+			PrintSeat(head);
 			printf("\nChoose your seat: \n");
 			scanf(" %s", SeatChoice);
 			if (TakeSeat(head, SeatChoice, loggedIn) == EXIT_SUCCESS) { //ako je doslo do promjene rewrite inace nista 
 				RewriteFile(head, filetemp[choice-1]);
 			}
 			printf("\n New status: \n"); //samo provjera da je dobro zauzeto 
-			while (head->Next != NULL) {
-				printf("%s %s ", head->Next->SeatName, head->Next->SeatState);
-				head = head->Next;
-				counter++;
-				if (counter % 4 == 0) {
-					printf("\n");
-				}
-			}
+			PrintSeat(head);
+			FreeList(head);
 			puts("\n");
 		}
 		else {
@@ -188,7 +167,7 @@ float percentageFull(SeatPosition head) {
 	}
 	return ((float)taken / counter) * 100;
 }
-/*int FreeList(SeatPosition head) {
+int FreeList(SeatPosition head) {
 	SeatPosition temp;
 	while (head->Next != NULL) {
 		temp = head->Next;
@@ -196,22 +175,7 @@ float percentageFull(SeatPosition head) {
 		free(temp);
 	}
 	return EXIT_SUCCESS;
-}*/
-/*int SeatFile(char* filename) {
-	FILE* fp = NULL;
-	fp = fopen(filename, "r");
-	char temp[20] = { 0 };
-	int numberOfSeats = 0;
-	fscanf(fp, " %d", &numberOfSeats);
-	//sad array s statusom sjedalica napravit i onda iza toga odabir stolice, mijenjanje statusa u filu itd.
-	while (!feof(fp)) {
-		fscanf(fp, " %s", temp);
-		printf(" %s", temp); //samo za provjeravanje da normalno cita 
-	}
-	puts("\n");
-	fclose(fp);
-	return EXIT_SUCCESS;
-}*/
+}
 
 int DeleteAll(Position current) {
 	if (current == NULL) {

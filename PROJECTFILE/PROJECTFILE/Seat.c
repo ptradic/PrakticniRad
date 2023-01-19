@@ -13,7 +13,6 @@ int Insert(SeatPosition Head, char* filename) {
 
 	SeatPosition P = Head;
 	SeatPosition Q;
-
 	FILE* fp = NULL;
 
 	fp = fopen(filename, "r");
@@ -25,7 +24,6 @@ int Insert(SeatPosition Head, char* filename) {
 	while (!feof(fp)) {
 
 		if (fscanf(fp, " %s %s", SeatName, SeatState) == 2) {
-
 
 			while (P->Next != NULL) {
 				P = P->Next;
