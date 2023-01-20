@@ -48,19 +48,8 @@ int AddAccountToFile(Position head) { //dodavanje novog racuna u file i stablo s
 		printf("Unesi korisnicko ime: ");
 		scanf(" %s", username);
 		status = checkUsernameSize(username, 20);
-		while (status != 0) {
-			printf("\nUnesi korisnicki ime:\n");
-			scanf(" %s", username);
-			status = checkUsernameSize(username, 20); //provjerava da unese user do 20 charactera 
-		}
-		availability = FindElementByUser(head, username); //jel taj available ako nije unosi dok ne nade neki koji je
-		while (availability != 0) {
-			printf("Ponovi unos korisnickog imena: ");
-			scanf(" %s", username);
-			availability = FindElementByUser(head, username); 
-		}
-		status = checkUsernameSize(username, 20); //oept provjera da ne unese available ali iznad 20 
-	} while (status != 0);
+		availability = FindElementByUser(head, username);
+	} while (status != 0 || availability != 0);
 	printf("Unesi lozinku: ");
 	scanf_s(" %s", password, MAX_SIZE);
 	AddNewAccountToList(head, username, password);
