@@ -4,3 +4,5 @@ st-du StDu.txt
 st-zd StZd.txt
 zg-st ZgSt.txt
 zg-ri ZgRi.txt
+du-zg DuZg.txt
+zd-zg ZdZg.txt

@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAX_SIZE 128
+#define MAX_SIZE 50
 
 typedef struct _BinarySearchTree* Position;
 typedef struct _BinarySearchTree {
@@ -10,6 +10,7 @@ typedef struct _BinarySearchTree {
 	Position right;
 }BinarySearchTree;
 
+int checkUsernameSize(char* username, int size);
 int LoadAccountsFromFile(Position head);
 int AddAccountToFile(Position head);
 Position AllocateMemory(Position current);

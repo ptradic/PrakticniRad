@@ -11,3 +11,6 @@ C9 <Empty> C10 ante C11 ivo C12 ivo
 D1 ivo D2 ivo D3 ivo D4 ante 
 D5 ivo D6 <Empty> D7 ivo D8 luka 
 D9 ivo D10 ivo D11 ivo D12 ivo 
+E1 ivo E2 ivo E3 ivo E4 ivo 
+E5 goran E6 <Empty> E7 <Empty> E8 <Empty> 
+E9 <Empty> E10 luka E11 <Empty> E12 ivo 

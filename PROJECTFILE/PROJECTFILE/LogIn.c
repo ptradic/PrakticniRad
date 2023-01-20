@@ -3,6 +3,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 int LoadAccountsFromFile(Position head) { //printfovi u whileu samo da se trenutno lakse prati sta se upisuje 
 	FILE* fp = NULL;
@@ -29,21 +30,37 @@ int LoadAccountsFromFile(Position head) { //printfovi u whileu samo da se trenut
 	fclose(fp);
 	return EXIT_SUCCESS;
 }
-
+int checkUsernameSize(char* username,int size) {
+	while (strlen(username) > size) {
+		printf("Wrong input maximum size is 20!\n");
+		return -1;
+	}
+	return EXIT_SUCCESS;
+}
 int AddAccountToFile(Position head) { //dodavanje novog racuna u file i stablo s provjeravama zauzetosti maila i usernamea 
 	char username[MAX_SIZE] = { 0 };
 	char password[MAX_SIZE] = { 0 };
 	int status = 0;
+	int availability = 0;
 	FILE* fp = NULL;
 	fp = fopen("racuni.txt", "a");
-	printf("Unesi korisnicko ime: ");
-	scanf_s(" %s", username, MAX_SIZE);
-	status = FindElementByUser(head, username);
-	while (status != 0) {
-		printf("Ponovi unos korisnickog imena: ");
-		scanf_s(" %s", username, MAX_SIZE);
-		status = FindElementByUser(head, username);
-	}
+	do {
+		printf("Unesi korisnicko ime: ");
+		scanf(" %s", username);
+		status = checkUsernameSize(username, 20);
+		while (status != 0) {
+			printf("\nUnesi korisnicki ime:\n");
+			scanf(" %s", username);
+			status = checkUsernameSize(username, 20); //provjerava da unese user do 20 charactera 
+		}
+		availability = FindElementByUser(head, username); //jel taj available ako nije unosi dok ne nade neki koji je
+		while (availability != 0) {
+			printf("Ponovi unos korisnickog imena: ");
+			scanf(" %s", username);
+			availability = FindElementByUser(head, username); 
+		}
+		status = checkUsernameSize(username, 20); //oept provjera da ne unese available ali iznad 20 
+	} while (status != 0);
 	printf("Unesi lozinku: ");
 	scanf_s(" %s", password, MAX_SIZE);
 	AddNewAccountToList(head, username, password);

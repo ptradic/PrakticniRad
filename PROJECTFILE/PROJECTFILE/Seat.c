@@ -8,19 +8,19 @@
 #define PROGRAM_ERROR (-1)
 #define MAX_SIZE 128
 
-int Insert(SeatPosition Head, char* filename) {
+int Insert(SeatPosition Head, char* filename,float *price) {
 	char SeatName[4] = { 0 }, SeatState[20] = { 0 };
 
 	SeatPosition P = Head;
 	SeatPosition Q;
 	FILE* fp = NULL;
-
 	fp = fopen(filename, "r");
 
 	if (NULL == fp) {
 		printf("File didn't open!\r\n");
 		return PROGRAM_ERROR;
 	}
+	fscanf(fp, "%f", price);
 	while (!feof(fp)) {
 
 		if (fscanf(fp, " %s %s", SeatName, SeatState) == 2) {

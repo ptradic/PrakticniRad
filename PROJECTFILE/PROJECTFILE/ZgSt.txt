@@ -1,12 +1,13 @@
+15.00 
 A1 ivo A2 ivo A3 <Empty> A4 <Empty> 
-A5 ivo A6 <Empty> A7 ivo A8 <Empty> 
+A5 ivo A6 ivo A7 ivo A8 <Empty> 
 A9 luka A10 <Empty> A11 ivo A12 <Empty> 
-B1 <Empty> B2 <Empty> B3 <Empty> B4 <Empty> 
+B1 <Empty> B2 <Empty> B3 ivo B4 <Empty> 
 B5 ivo B6 <Empty> B7 ante B8 ante 
 B9 <Empty> B10 <Empty> B11 <Empty> B12 ante 
 C1 ivo C2 <Empty> C3 <Empty> C4 <Empty> 
 C5 <Empty> C6 <Empty> C7 <Empty> C8 <Empty> 
-C9 <Empty> C10 <Empty> C11 <Empty> C12 <Empty> 
+C9 <Empty> C10 <Empty> C11 noviuser C12 ivo 
 D1 <Empty> D2 <Empty> D3 <Empty> D4 ivo 
-D5 <Empty> D6 <Empty> D7 <Empty> D8 <Empty> 
+D5 <Empty> D6 <Empty> D7 <Empty> D8 noviuser 
 D9 ivo D10 ivo D11 <Empty> D12 ivo 

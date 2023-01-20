@@ -7,4 +7,4 @@ typedef struct Seat {
 	SeatPosition Next;
 }Seat;
 
-int Insert(SeatPosition Head,char* filename);
+int Insert(SeatPosition Head,char* filename,float *price);

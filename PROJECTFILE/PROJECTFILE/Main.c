@@ -5,11 +5,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define MAX_LINE 1024
-#define NUMBER_OF_ROUTES 6	
+#define NUMBER_OF_ROUTES 8	
 
 
 int ReservationMenu(Position loggedIn);
-int RewriteFile(SeatPosition head, char* filename);
+int RewriteFile(SeatPosition head, char* filename,float price);
 int TakeSeat(SeatPosition head, char* SeatChoice, Position loggedIn);
 int PrintSeat(SeatPosition temp);
 float percentageFull(SeatPosition head);
@@ -82,13 +82,17 @@ int ReservationMenu(Position loggedIn) {
 			break;
 		}
 		if (choice <= NUMBER_OF_ROUTES) {
-			Insert(head, filetemp[choice - 1]); //napravi listu 
+			Insert(head, filetemp[choice - 1],&price); //napravi listu 
+			printf("The price of a ticket on this line is: %.2f euros \n", price);
 			printf("This bus is %.2f percent occupied!\n", percentageFull(head->Next)); //samo testiranje za mozda koristenje posli u admin-view i dizanju cijena
+			if (percentageFull(head->Next) > 50) {
+				printf("Price is increased due to high demand to %.2f \n", price*1.15 );
+			}
 			PrintSeat(head);
 			printf("\nChoose your seat: \n");
 			scanf(" %s", SeatChoice);
 			if (TakeSeat(head, SeatChoice, loggedIn) == EXIT_SUCCESS) { //ako je doslo do promjene rewrite inace nista 
-				RewriteFile(head, filetemp[choice-1]);
+				RewriteFile(head, filetemp[choice-1],price);
 			}
 			printf("\n New status: \n"); //samo provjera da je dobro zauzeto 
 			PrintSeat(head);
@@ -102,7 +106,7 @@ int ReservationMenu(Position loggedIn) {
 	return EXIT_SUCCESS;
 }
 
-int RewriteFile(SeatPosition head, char* filename) {
+int RewriteFile(SeatPosition head, char* filename,float price) {
 	FILE* fp = NULL;
 	fp = fopen(filename, "w+");
 	int counter = 0;
@@ -110,6 +114,7 @@ int RewriteFile(SeatPosition head, char* filename) {
 		perror("Error opening file!");
 		return -1;
 	}
+	fprintf(fp, "%.2f \n", price);
 	while (head->Next != NULL) {
 		fprintf(fp, "%s %s ", head->Next->SeatName, head->Next->SeatState);
 		head = head->Next;
@@ -141,7 +146,7 @@ int PrintSeat(SeatPosition temp) {
 	int counter = 0;
 
 	while (temp->Next != NULL) {
-		printf("%s %s ", temp->Next->SeatName, temp->Next->SeatState);
+		printf(" %-4s %-20s ", temp->Next->SeatName, temp->Next->SeatState);
 		temp = temp->Next;
 		counter++;
 		if (counter % 4 == 0) {
