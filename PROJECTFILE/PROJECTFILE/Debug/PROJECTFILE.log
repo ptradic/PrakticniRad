@@ -1,5 +1,2 @@
-﻿  LogIn.c
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\LogIn.c(34,26): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\LogIn.c(90): warning C4715: 'FindElementByUser': not all control paths return a value
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\LogIn.c(177): warning C4715: 'FindLoginUser': not all control paths return a value
+﻿  Main.c
   PROJECTFILE.vcxproj -> C:\Users\Puizina\source\repos\PROJECTFILE\Debug\PROJECTFILE.exe

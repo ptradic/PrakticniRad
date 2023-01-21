@@ -1,3 +1,4 @@
+admin pass
 ivo sifra1
 ante sifra2
 josip sifra3
@@ -9,7 +10,3 @@ zoran password28
 noviracun noviracun123
 aaaaa lozinka123
 zoran123 sifra123
-
-noviuser noviuser123
-noviusername noviusername123
-noviracun123 lozinka123

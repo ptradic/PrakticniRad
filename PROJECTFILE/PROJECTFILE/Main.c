@@ -4,6 +4,7 @@
 #include "Seat.h"
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #define MAX_LINE 1024
 #define NUMBER_OF_ROUTES 8	
 
@@ -22,9 +23,10 @@ int main() {
 	Position head = &headAccount;
 	Position loggedIn = NULL;
 	LoadAccountsFromFile(head); //dodaje u listu racune iz filea 
-	INorderPrint(head); //samo da se lakse prate trenutni racuni 
+	//INorderPrint(head); //samo da se lakse prate trenutni racuni 
 	char choice = '0';
 	do {
+		system("cls");
 		printf("\n1-Register a new account\n2-Login\n0-Exit\n ");
 		scanf_s(" %c", &choice, MAX_SIZE);
 		switch (choice) {
@@ -34,9 +36,15 @@ int main() {
 		case '2':
 			loggedIn = LogIn(head);
 			if (loggedIn != NULL) {
-				printf("You're Logged into an account with following credentials:\n");
-				printf("%s %s\n", loggedIn->username, loggedIn->password);
-				ReservationMenu(loggedIn);
+				//printf("You're Logged into an account with following credentials:\n");
+				//printf("%s %s\n", loggedIn->username, loggedIn->password);
+				if (strcmp(loggedIn->username, "admin") == 0) {
+					printf("admin view!\n");
+					//adminView();
+				}
+				else {
+					ReservationMenu(loggedIn);
+				}
 			} //printfovi samo da se vidi da je na tocnom useru i sad ulazi u glavni meni di bi tribali rezervirat i ostalo 
 			break;
 		case '0':
@@ -62,6 +70,7 @@ int ReservationMenu(Position loggedIn) {
 	SeatPosition head= &SeatHead;
 	char SeatChoice[5] = { 0 };
 	float price = 0;
+	int numberofTickets = 0;
 	if (!fp) {
 		perror("Error opening bus file!");
 		return -1;
@@ -72,6 +81,8 @@ int ReservationMenu(Position loggedIn) {
 	}
 	fclose(fp);
 	do {
+		system("cls");
+		printf("logged in as-> %s \n", loggedIn->username);
 		for (int i = 0; i < NUMBER_OF_ROUTES; i++) {
 			printf("%d %s %s\n", i + 1, BusArray[i], filetemp[i]); //samo za pracenje da je dobro zapisano
 		}
@@ -89,10 +100,15 @@ int ReservationMenu(Position loggedIn) {
 				printf("Price is increased due to high demand to %.2f \n", price*1.15 );
 			}
 			PrintSeat(head);
-			printf("\nChoose your seat: \n");
-			scanf(" %s", SeatChoice);
-			if (TakeSeat(head, SeatChoice, loggedIn) == EXIT_SUCCESS) { //ako je doslo do promjene rewrite inace nista 
-				RewriteFile(head, filetemp[choice-1],price);
+			printf("Enter the amount of tickets you would like to buy: ");
+			scanf("%d", &numberofTickets);
+			for (int i = 0; i < numberofTickets;) {
+				printf("\nChoose your seat: \n");
+				scanf(" %s", SeatChoice);
+				if (TakeSeat(head, SeatChoice, loggedIn) == EXIT_SUCCESS) { //ako je doslo do promjene rewrite inace nista 
+					RewriteFile(head, filetemp[choice - 1], price);
+					i++;
+				}
 			}
 			printf("\n New status: \n"); //samo provjera da je dobro zauzeto 
 			PrintSeat(head);

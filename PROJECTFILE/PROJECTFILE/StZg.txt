@@ -1,8 +1,8 @@
 15.00 
 A1 ivo A2 ivo A3 <Empty> A4 <Empty> 
-A5 ivo A6 <Empty> A7 ivo A8 <Empty> 
-A9 luka A10 <Empty> A11 ivo A12 <Empty> 
-B1 ivo B2 <Empty> B3 <Empty> B4 <Empty> 
+A5 ivo A6 ivo A7 ivo A8 <Empty> 
+A9 luka A10 ivo A11 ivo A12 <Empty> 
+B1 ivo B2 ivo B3 <Empty> B4 <Empty> 
 B5 ivo B6 <Empty> B7 ante B8 ante 
 B9 <Empty> B10 <Empty> B11 <Empty> B12 ante 
 C1 ivo C2 <Empty> C3 <Empty> C4 <Empty> 
