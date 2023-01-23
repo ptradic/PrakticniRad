@@ -27,6 +27,7 @@ int InsertHours(HourPosition Head, char* filename);
 int PrintHours(HourPosition head);
 HourPosition FindHours(HourPosition head, char* timeselect);
 int FreeHourList(HourPosition head);
+float AdjustedPrice(float percentageFull, float price);
 
 int main() {
 
@@ -69,10 +70,61 @@ int main() {
 	return EXIT_SUCCESS;
 }
 int AdminView(Position loggedIn) {
-	printf("Admin view!\n");
+	system("cls");
+	printf("logged in as -> %s \n", loggedIn->username);
+	printf("Current status of all active busses:\n ");
+	char BusArray[NUMBER_OF_ROUTES][10] = { 0 };
+	char filetemp[NUMBER_OF_ROUTES][10] = { 0 };
+	FILE* fp = NULL;
+	int i = 0;
+	HourList hourAdmin = { .HourFilename = "",.startingHour = "",.Next = NULL };
+	HourPosition headAdminHead = &hourAdmin;
+	HourPosition temp = headAdminHead;
+	Seat seatAdmin = { .SeatName = "",.SeatState = "",.Next = NULL };
+	SeatPosition seatAdminHead = &seatAdmin;
+	float price = 0;
+	float percentage = 0;
+	fp = fopen("autobusi.txt","r");
+	if (!fp) {
+		printf("error opening file!");
+		return -1;
+	}
+	while (!feof(fp)) {
+		fscanf(fp, "%s %s", BusArray[i], filetemp[i]);
+		i++;
+	}
+	fclose(fp);
+	for (int i = 0; i < NUMBER_OF_ROUTES; i++) {
+		printf("Route %s\n", BusArray[i]);
+		InsertHours(headAdminHead, filetemp[i]);
+		temp = headAdminHead;
+		while (temp->Next != NULL) {
+			Insert(seatAdminHead, temp->Next->HourFilename, &price);
+			percentage = percentageFull(seatAdminHead->Next);
+			printf("Hour %s is %.2f percent full, starting price was %.2f and"
+				" the current price is % .2f \n", temp->Next->startingHour, percentage, price, AdjustedPrice(percentage,price));
+			//PrintSeat(seatAdminHead);
+			FreeList(seatAdminHead);
+			temp = temp->Next;
+		}
+		FreeHourList(headAdminHead);
+	}
+
 	printf("Press any key to continue...\n");
 	getch();
 	return EXIT_SUCCESS;
+}
+float AdjustedPrice(float percentageFull,float price) {
+	if (percentageFull > 80) {
+		return price * 1.4;
+	}
+	else if (percentageFull > 60) {
+		return price * 1.25;
+	}
+	else if (percentageFull > 50) {
+		return price * 1.1;
+	}
+	return price;
 }
 int InsertHours(HourPosition Head, char* filename) {
 	char startingHour[10] = { 0 }, HourFilename[15] = { 0 };
@@ -125,6 +177,7 @@ int ReservationMenu(Position loggedIn) {
 	int numberofTickets = 0;
 	char timeselect[10] = { 0 };
 	HourPosition selected;
+	float percentage = 0;
 	if (!fp) {
 		perror("Error opening bus file!");
 		return -1;
@@ -157,9 +210,10 @@ int ReservationMenu(Position loggedIn) {
 			printf(" %s", selected->HourFilename);
 			Insert(head, selected->HourFilename, &price); //napravi listu 
 			printf("The price of a ticket on this line is: %.2f euros \n", price);
-			printf("This bus is %.2f percent occupied!\n", percentageFull(head->Next)); //samo testiranje za mozda koristenje posli u admin-view i dizanju cijena
+			percentage = percentageFull(head->Next);
+			printf("This bus is %.2f percent occupied!\n", percentage); //samo testiranje za mozda koristenje posli u admin-view i dizanju cijena
 			if (percentageFull(head->Next) > 50) {
-				printf("Price is increased due to high demand to %.2f \n", price*1.15 );
+				printf("Price is increased due to high demand to %.2f \n", AdjustedPrice(percentage,price) );
 			}
 			PrintSeat(head);
 			printf("Enter the amount of tickets you would like to buy: ");
