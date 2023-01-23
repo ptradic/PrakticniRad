@@ -10,8 +10,8 @@
 
 typedef struct HourList* HourPosition;
 typedef struct HourList {
-	char startingHour[10];
-	char HourFilename[15];
+	char startingHour[15];
+	char HourFilename[20];
 	HourPosition Next;
 }HourList;
 
@@ -174,8 +174,8 @@ int ReservationMenu(Position loggedIn) {
 			}
 			printf("\n New status: \n");//samo provjera da je dobro zauzeto 
 			PrintSeat(head);
-			/*printf("Press any key to proceed...\n");
-			getch();*/
+			printf("Press any key to proceed...\n");
+			getch();
 			FreeList(head);
 			FreeHourList(hourHead);
 			puts("\n");
@@ -273,7 +273,6 @@ int FreeHourList(HourPosition head) {
 		head->Next = head->Next->Next;
 		free(temp);
 	}
-	printf("Cista lista!!!!\n");
 	return EXIT_SUCCESS;
 }
 
@@ -284,7 +283,6 @@ int FreeList(SeatPosition head) {
 		head->Next = head->Next->Next;
 		free(temp);
 	}
-	printf("Cista prva!!!!\n");
 	return EXIT_SUCCESS;
 }
 
