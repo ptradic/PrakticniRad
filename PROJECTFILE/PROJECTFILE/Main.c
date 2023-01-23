@@ -5,9 +5,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
 #define MAX_LINE 1024
 #define NUMBER_OF_ROUTES 8	
-
 
 int ReservationMenu(Position loggedIn);
 int RewriteFile(SeatPosition head, char* filename,float price);
@@ -104,7 +104,7 @@ int ReservationMenu(Position loggedIn) {
 			scanf("%d", &numberofTickets);
 			for (int i = 0; i < numberofTickets;) {
 				printf("\nChoose your seat: \n");
-				scanf(" %s", SeatChoice);
+				scanf_s(" %s", SeatChoice, MAX_SIZE);
 				if (TakeSeat(head, SeatChoice, loggedIn) == EXIT_SUCCESS) { //ako je doslo do promjene rewrite inace nista 
 					RewriteFile(head, filetemp[choice - 1], price);
 					i++;
@@ -162,9 +162,11 @@ int PrintSeat(SeatPosition temp) {
 	int counter = 0;
 
 	while (temp->Next != NULL) {
+
 		printf(" %-4s %-20s ", temp->Next->SeatName, temp->Next->SeatState);
 		temp = temp->Next;
 		counter++;
+
 		if (counter % 4 == 0) {
 			printf("\n");
 		}
@@ -172,9 +174,12 @@ int PrintSeat(SeatPosition temp) {
 
 	return EXIT_SUCCESS;
 }
+
 float percentageFull(SeatPosition head) {
+
 	int taken = 0;
 	int counter = 0;
+
 	while (head->Next != NULL) {
 		if (strcmp(head->SeatState, "<Empty>") != 0) {
 			taken++;
@@ -184,22 +189,30 @@ float percentageFull(SeatPosition head) {
 	}
 	return ((float)taken / counter) * 100;
 }
+
 int FreeList(SeatPosition head) {
+
 	SeatPosition temp;
+
 	while (head->Next != NULL) {
+
 		temp = head->Next;
 		head->Next = head->Next->Next;
 		free(temp);
 	}
+
 	return EXIT_SUCCESS;
 }
 
 int DeleteAll(Position current) {
+
 	if (current == NULL) {
 		return 0;
 	}
+
 	DeleteAll(current->left);
 	DeleteAll(current->right);
 	free(current);
+
 	return EXIT_SUCCESS;
 }

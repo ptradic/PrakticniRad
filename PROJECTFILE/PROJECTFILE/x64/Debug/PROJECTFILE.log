@@ -1,6 +1,6 @@
-﻿  Main.c
-C:\Users\Pjero\Desktop\Main2\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(99,16): warning C4013: 'TakeSeat' undefined; assuming extern returning int
-C:\Users\Pjero\Desktop\Main2\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(100,16): warning C4013: 'RewriteFile' undefined; assuming extern returning int
-  Seat.c
+﻿  LogIn.c
+  Main.c
   Generating Code...
-  PROJECTFILE.vcxproj -> C:\Users\Pjero\Desktop\Main2\PrakticniRad\PROJECTFILE\x64\Debug\PROJECTFILE.exe
+C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(178): warning C4715: 'FindLoginUser': not all control paths return a value
+C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(90): warning C4715: 'FindElementByUser': not all control paths return a value
+  PROJECTFILE.vcxproj -> C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\x64\Debug\PROJECTFILE.exe

@@ -1,18 +1,23 @@
-#include "LogIn.h"
 #define _CRT_SECURE_NO_WARNINGS
 
+#include "LogIn.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
 int LoadAccountsFromFile(Position head) { //printfovi u whileu samo da se trenutno lakse prati sta se upisuje 
+
 	FILE* fp = NULL;
 	fp = fopen("racuni.txt", "r");
+
 	if (!fp) {
+
 		perror("Error opening account file!");
 		return -1;
 	}
+
 	while (!feof(fp)) {
+
 		Position newElement = NULL;
 		newElement = AllocateMemory(newElement);
 		fscanf_s(fp, "%s", newElement->username, MAX_SIZE);
@@ -27,16 +32,21 @@ int LoadAccountsFromFile(Position head) { //printfovi u whileu samo da se trenut
 			free(newElement);
 		}
 	}
+
 	fclose(fp);
 	return EXIT_SUCCESS;
 }
+
 int checkUsernameSize(char* username,int size) {
+
 	while (strlen(username) > size) {
+
 		printf("Wrong input maximum size is 20!\n");
 		return -1;
 	}
 	return EXIT_SUCCESS;
 }
+
 int AddAccountToFile(Position head) { //dodavanje novog racuna u file i stablo s provjeravama zauzetosti maila i usernamea 
 	char username[MAX_SIZE] = { 0 };
 	char password[MAX_SIZE] = { 0 };
@@ -46,7 +56,7 @@ int AddAccountToFile(Position head) { //dodavanje novog racuna u file i stablo s
 	fp = fopen("racuni.txt", "a");
 	do {
 		printf("Unesi korisnicko ime: ");
-		scanf(" %s", username);
+		scanf_s(" %s", username, MAX_SIZE);
 		status = checkUsernameSize(username, 20);
 		availability = FindElementByUser(head, username);
 	} while (status != 0 || availability != 0);
@@ -172,6 +182,7 @@ Position FindLoginUser(Position current, char* username) {
 	else if (strcmp(current->username, username) < 0)
 		FindLoginUser(current->right, username);
 
-	else if (strcmp(current->username, username) > 0)
+	else if (strcmp(current->username, username) > 0) 
 		FindLoginUser(current->left, username);
+
 }
