@@ -5,9 +5,15 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
 #define MAX_LINE 1024
-#define NUMBER_OF_ROUTES 8	
+#define NUMBER_OF_ROUTES 4	
+
+typedef struct HourList* HourPosition;
+typedef struct HourList {
+	char startingHour[10];
+	char HourFilename[15];
+	HourPosition Next;
+}HourList;
 
 int ReservationMenu(Position loggedIn);
 int RewriteFile(SeatPosition head, char* filename,float price);
@@ -16,6 +22,11 @@ int PrintSeat(SeatPosition temp);
 float percentageFull(SeatPosition head);
 int FreeList(SeatPosition head);
 int DeleteAll(Position current);
+int AdminView(Position loggedIn);
+int InsertHours(HourPosition Head, char* filename);
+int PrintHours(HourPosition head);
+HourPosition FindHours(HourPosition head, char* timeselect);
+int FreeHourList(HourPosition head);
 
 int main() {
 
@@ -39,8 +50,7 @@ int main() {
 				//printf("You're Logged into an account with following credentials:\n");
 				//printf("%s %s\n", loggedIn->username, loggedIn->password);
 				if (strcmp(loggedIn->username, "admin") == 0) {
-					printf("admin view!\n");
-					//adminView();
+					AdminView(loggedIn);
 				}
 				else {
 					ReservationMenu(loggedIn);
@@ -58,7 +68,47 @@ int main() {
 	DeleteAll(head->right);
 	return EXIT_SUCCESS;
 }
+int AdminView(Position loggedIn) {
+	printf("Admin view!\n");
+	printf("Press any key to continue...\n");
+	getch();
+	return EXIT_SUCCESS;
+}
+int InsertHours(HourPosition Head, char* filename) {
+	char startingHour[10] = { 0 }, HourFilename[15] = { 0 };
 
+	HourPosition P = Head;
+	HourPosition Q;
+	FILE* fp = NULL;
+	fp = fopen(filename, "r");
+
+	if (NULL == fp) {
+		printf("File didn't open!\r\n");
+		return -1;
+	}
+	while (!feof(fp)) {
+
+		if (fscanf(fp, " %s %s", startingHour, HourFilename) == 2) {
+
+			while (P->Next != NULL) {
+				P = P->Next;
+			}
+			Q = (HourPosition)malloc(sizeof(struct Seat));
+
+			if (Q == NULL) {
+				printf("Allocate error!\r\n");
+				return -1;
+			}
+			strcpy(Q->startingHour, startingHour);
+			strcpy(Q->HourFilename, HourFilename);
+
+			P->Next = Q;
+			Q->Next = NULL;
+		}
+	}
+	fclose(fp);
+	return EXIT_SUCCESS;
+}
 int ReservationMenu(Position loggedIn) {
 	FILE* fp = NULL;
 	fp = fopen("autobusi.txt", "r");
@@ -68,9 +118,13 @@ int ReservationMenu(Position loggedIn) {
 	int choice = 0;
 	Seat SeatHead = { .SeatName = "",.SeatState = "" ,.Next = NULL };
 	SeatPosition head= &SeatHead;
+	HourList Head = { .HourFilename = "",.startingHour = "",.Next = NULL };
+	HourPosition hourHead = &Head;
 	char SeatChoice[5] = { 0 };
 	float price = 0;
 	int numberofTickets = 0;
+	char timeselect[10] = { 0 };
+	HourPosition selected;
 	if (!fp) {
 		perror("Error opening bus file!");
 		return -1;
@@ -81,7 +135,7 @@ int ReservationMenu(Position loggedIn) {
 	}
 	fclose(fp);
 	do {
-		system("cls");
+		//system("cls");
 		printf("logged in as-> %s \n", loggedIn->username);
 		for (int i = 0; i < NUMBER_OF_ROUTES; i++) {
 			printf("%d %s %s\n", i + 1, BusArray[i], filetemp[i]); //samo za pracenje da je dobro zapisano
@@ -93,7 +147,15 @@ int ReservationMenu(Position loggedIn) {
 			break;
 		}
 		if (choice <= NUMBER_OF_ROUTES) {
-			Insert(head, filetemp[choice - 1],&price); //napravi listu 
+			printf("%s\n", filetemp[choice - 1]);
+			InsertHours(hourHead, filetemp[choice - 1]);
+			PrintHours(hourHead->Next);
+			do{
+				printf("Enter the time at which you would like to travel: ");
+			scanf(" %s", timeselect);
+			} while ((selected=FindHours(hourHead, timeselect)) == NULL);
+			printf(" %s", selected->HourFilename);
+			Insert(head, selected->HourFilename, &price); //napravi listu 
 			printf("The price of a ticket on this line is: %.2f euros \n", price);
 			printf("This bus is %.2f percent occupied!\n", percentageFull(head->Next)); //samo testiranje za mozda koristenje posli u admin-view i dizanju cijena
 			if (percentageFull(head->Next) > 50) {
@@ -104,15 +166,18 @@ int ReservationMenu(Position loggedIn) {
 			scanf("%d", &numberofTickets);
 			for (int i = 0; i < numberofTickets;) {
 				printf("\nChoose your seat: \n");
-				scanf_s(" %s", SeatChoice, MAX_SIZE);
+				scanf(" %s", SeatChoice);
 				if (TakeSeat(head, SeatChoice, loggedIn) == EXIT_SUCCESS) { //ako je doslo do promjene rewrite inace nista 
-					RewriteFile(head, filetemp[choice - 1], price);
+					RewriteFile(head, selected->HourFilename, price);
 					i++;
 				}
 			}
-			printf("\n New status: \n"); //samo provjera da je dobro zauzeto 
+			printf("\n New status: \n");//samo provjera da je dobro zauzeto 
 			PrintSeat(head);
+			/*printf("Press any key to proceed...\n");
+			getch();*/
 			FreeList(head);
+			FreeHourList(hourHead);
 			puts("\n");
 		}
 		else {
@@ -121,7 +186,23 @@ int ReservationMenu(Position loggedIn) {
 	} while (choice != 0);
 	return EXIT_SUCCESS;
 }
-
+int PrintHours(HourPosition head) {
+	while (head != NULL) {
+		printf(" %s\n", head->startingHour);
+		head = head->Next;
+	}
+	return EXIT_SUCCESS;
+}
+HourPosition FindHours(HourPosition head,char* hourselect) {
+	while (head!=NULL) {
+		if (strcmp(head->startingHour, hourselect) == 0) {
+			printf("Hour %s selected!\n",head->startingHour);
+			return head;
+		}
+		head = head->Next;
+	}
+	return NULL;
+}
 int RewriteFile(SeatPosition head, char* filename,float price) {
 	FILE* fp = NULL;
 	fp = fopen(filename, "w+");
@@ -162,11 +243,9 @@ int PrintSeat(SeatPosition temp) {
 	int counter = 0;
 
 	while (temp->Next != NULL) {
-
 		printf(" %-4s %-20s ", temp->Next->SeatName, temp->Next->SeatState);
 		temp = temp->Next;
 		counter++;
-
 		if (counter % 4 == 0) {
 			printf("\n");
 		}
@@ -174,12 +253,9 @@ int PrintSeat(SeatPosition temp) {
 
 	return EXIT_SUCCESS;
 }
-
 float percentageFull(SeatPosition head) {
-
 	int taken = 0;
 	int counter = 0;
-
 	while (head->Next != NULL) {
 		if (strcmp(head->SeatState, "<Empty>") != 0) {
 			taken++;
@@ -190,29 +266,34 @@ float percentageFull(SeatPosition head) {
 	return ((float)taken / counter) * 100;
 }
 
-int FreeList(SeatPosition head) {
-
-	SeatPosition temp;
-
+int FreeHourList(HourPosition head) {
+	HourPosition temp;
 	while (head->Next != NULL) {
-
 		temp = head->Next;
 		head->Next = head->Next->Next;
 		free(temp);
 	}
+	printf("Cista lista!!!!\n");
+	return EXIT_SUCCESS;
+}
 
+int FreeList(SeatPosition head) {
+	SeatPosition temp;
+	while (head->Next != NULL) {
+		temp = head->Next;
+		head->Next = head->Next->Next;
+		free(temp);
+	}
+	printf("Cista prva!!!!\n");
 	return EXIT_SUCCESS;
 }
 
 int DeleteAll(Position current) {
-
 	if (current == NULL) {
 		return 0;
 	}
-
 	DeleteAll(current->left);
 	DeleteAll(current->right);
 	free(current);
-
 	return EXIT_SUCCESS;
 }

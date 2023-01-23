@@ -1,13 +1,4 @@
-10.00 
-A1 <Empty> A2 <Empty> A3 <Empty> A4 ivo 
-A5 <Empty> A6 ivo A7 <Empty> A8 zoran 
-A9 <Empty> A10 <Empty> A11 <Empty> A12 josip 
-B1 <Empty> B2 <Empty> B3 josip B4 <Empty> 
-B5 ivo B6 <Empty> B7 goran B8 ivo 
-B9 <Empty> B10 <Empty> B11 ivo B12 <Empty> 
-C1 ivo C2 <Empty> C3 ivo C4 ante 
-C5 <Empty> C6 <Empty> C7 <Empty> C8 <Empty> 
-C9 <Empty> C10 <Empty> C11 <Empty> C12 <Empty> 
-D1 <Empty> D2 <Empty> D3 <Empty> D4 ante 
-D5 <Empty> D6 ivo D7 <Empty> D8 ivo 
-D9 <Empty> D10 zoran D11 <Empty> D12 <Empty> 
+08:00 08StRi.txt
+12:00 12StRi.txt
+16:00 16StRi.txt
+20:00 20StRi.txt
