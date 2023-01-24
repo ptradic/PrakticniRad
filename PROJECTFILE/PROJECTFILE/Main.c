@@ -39,13 +39,20 @@ int main() {
 	char choice = '0';
 	do {
 		system("cls");
-		printf("\n1-Register a new account\n2-Login\n0-Exit\n ");
+		printf("=========================================================================\n");
+		printf("Welcome to bus reservation system! \nMenu: \n");
+		printf("1-Register a new account\n2-Login\n0-Exit\n ");
+		printf("=========================================================================\n");
+		printf("Choose your next action: ");
 		scanf_s(" %c", &choice, MAX_SIZE);
 		switch (choice) {
 		case '1':
+			system("cls");
+			printf("->Account creation page\n");
 			AddAccountToFile(head);
 			break;
 		case '2':
+			system("cls");
 			loggedIn = LogIn(head);
 			if (loggedIn != NULL) {
 				//printf("You're Logged into an account with following credentials:\n");
@@ -72,7 +79,7 @@ int main() {
 int AdminView(Position loggedIn) {
 	system("cls");
 	printf("logged in as -> %s \n", loggedIn->username);
-	printf("Current status of all active busses:\n ");
+	printf("Current status of all active busses:\n");
 	char BusArray[NUMBER_OF_ROUTES][10] = { 0 };
 	char filetemp[NUMBER_OF_ROUTES][10] = { 0 };
 	FILE* fp = NULL;
@@ -95,14 +102,14 @@ int AdminView(Position loggedIn) {
 	}
 	fclose(fp);
 	for (int i = 0; i < NUMBER_OF_ROUTES; i++) {
-		printf("Route %s\n", BusArray[i]);
+		printf("\n");
+		printf("Statistics for route: %s\n", BusArray[i]);
 		InsertHours(headAdminHead, filetemp[i]);
 		temp = headAdminHead;
 		while (temp->Next != NULL) {
 			Insert(seatAdminHead, temp->Next->HourFilename, &price);
 			percentage = percentageFull(seatAdminHead->Next);
-			printf("Hour %s is %.2f percent full, starting price was %.2f and"
-				" the current price is % .2f \n", temp->Next->startingHour, percentage, price, AdjustedPrice(percentage,price));
+			printf("Hour %s is at-> %.2f%% capacity, current price ->%.2f (starting price was %.2f)\n", temp->Next->startingHour, percentage, AdjustedPrice(percentage,price), price);
 			//PrintSeat(seatAdminHead);
 			FreeList(seatAdminHead);
 			temp = temp->Next;
@@ -177,6 +184,7 @@ int ReservationMenu(Position loggedIn) {
 	int numberofTickets = 0;
 	char timeselect[10] = { 0 };
 	HourPosition selected;
+	char proceed[10] = { 0 };
 	float percentage = 0;
 	if (!fp) {
 		perror("Error opening bus file!");
@@ -188,7 +196,7 @@ int ReservationMenu(Position loggedIn) {
 	}
 	fclose(fp);
 	do {
-		//system("cls");
+		system("cls");
 		printf("logged in as-> %s \n", loggedIn->username);
 		for (int i = 0; i < NUMBER_OF_ROUTES; i++) {
 			printf("%d %s %s\n", i + 1, BusArray[i], filetemp[i]); //samo za pracenje da je dobro zapisano
@@ -200,14 +208,15 @@ int ReservationMenu(Position loggedIn) {
 			break;
 		}
 		if (choice <= NUMBER_OF_ROUTES) {
-			printf("%s\n", filetemp[choice - 1]);
 			InsertHours(hourHead, filetemp[choice - 1]);
+			system("cls");
+			printf("These are the available starting horus for the chosen route: \n");
 			PrintHours(hourHead->Next);
 			do{
 				printf("Enter the time at which you would like to travel: ");
 			scanf(" %s", timeselect);
 			} while ((selected=FindHours(hourHead, timeselect)) == NULL);
-			printf(" %s", selected->HourFilename);
+			//printf(" %s", selected->HourFilename);
 			Insert(head, selected->HourFilename, &price); //napravi listu 
 			printf("The price of a ticket on this line is: %.2f euros \n", price);
 			percentage = percentageFull(head->Next);
@@ -226,10 +235,14 @@ int ReservationMenu(Position loggedIn) {
 					i++;
 				}
 			}
-			printf("\n New status: \n");//samo provjera da je dobro zauzeto 
+			system("cls");
+			printf("New status: \n");//samo provjera da je dobro zauzeto 
 			PrintSeat(head);
-			printf("Press any key to proceed...\n");
-			getch();
+			printf("Input exit to quit, input anything else to proceed...\n");
+			scanf(" %s",proceed);
+			if (strcmp(proceed,"exit")==0) {
+				break;
+			}
 			FreeList(head);
 			FreeHourList(hourHead);
 			puts("\n");
@@ -250,6 +263,7 @@ int PrintHours(HourPosition head) {
 HourPosition FindHours(HourPosition head,char* hourselect) {
 	while (head!=NULL) {
 		if (strcmp(head->startingHour, hourselect) == 0) {
+			system("cls");
 			printf("Hour %s selected!\n",head->startingHour);
 			return head;
 		}

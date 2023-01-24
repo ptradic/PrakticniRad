@@ -3,7 +3,7 @@ A1 <Empty> A2 <Empty> A3 <Empty> A4 <Empty>
 A5 <Empty> A6 <Empty> A7 <Empty> A8 <Empty> 
 A9 ivo A10 ivo A11 ivo A12 <Empty> 
 B1 <Empty> B2 <Empty> B3 <Empty> B4 <Empty> 
-B5 <Empty> B6 <Empty> B7 <Empty> B8 <Empty> 
+B5 <Empty> B6 newaccount B7 <Empty> B8 <Empty> 
 B9 <Empty> B10 <Empty> B11 <Empty> B12 <Empty> 
 C1 <Empty> C2 <Empty> C3 <Empty> C4 <Empty> 
 C5 <Empty> C6 <Empty> C7 <Empty> C8 <Empty> 

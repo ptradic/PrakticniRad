@@ -45,12 +45,12 @@ int AddAccountToFile(Position head) { //dodavanje novog racuna u file i stablo s
 	FILE* fp = NULL;
 	fp = fopen("racuni.txt", "a");
 	do {
-		printf("Unesi korisnicko ime: ");
+		printf("Enter your username: ");
 		scanf(" %s", username);
 		status = checkUsernameSize(username, 20);
 		availability = FindElementByUser(head, username);
 	} while (status != 0 || availability != 0);
-	printf("Unesi lozinku: ");
+	printf("Enter your password: ");
 	scanf_s(" %s", password, MAX_SIZE);
 	AddNewAccountToList(head, username, password);
 	fprintf(fp, "%s", username);
@@ -79,7 +79,7 @@ int FindElementByUser(Position current, char* username) { //provjerava jel zauze
 	}
 	if (strcmp(current->username, username) == 0)
 	{
-		printf("username already taken!\n");
+		printf("That username is already taken,try another one!\n");
 		return -1;
 	}
 	else if (strcmp(current->username, username) < 0)
@@ -95,6 +95,7 @@ Position LogIn(Position head) { //pronalazi user, ako nade password tog usera us
 	char choice = '0';
 	Position find = NULL;
 	do {
+		system("cls");
 		printf("Input your login info: \n");
 		printf("Username: ");
 		scanf_s(" %s", username, MAX_SIZE);
@@ -110,6 +111,8 @@ Position LogIn(Position head) { //pronalazi user, ako nade password tog usera us
 			scanf_s(" %s", password, MAX_SIZE);
 			if (strcmp(find->password, password) == 0) {
 				printf("Login succsesful! \n");
+				printf("Press any button to proceed...\n");
+				getch();
 				return find;
 			}
 			else {

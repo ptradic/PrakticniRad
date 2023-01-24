@@ -10,3 +10,5 @@ zoran password28
 noviracun noviracun123
 aaaaa lozinka123
 zoran123 sifra123
+newaccount password123
+newaccount123 newpassword
