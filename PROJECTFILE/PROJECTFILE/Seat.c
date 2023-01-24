@@ -1,6 +1,7 @@
-#include "Seat.h"
+
 #define _CRT_SECURE_NO_WARNINGS 
 
+#include "Seat.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,7 +9,7 @@
 #define PROGRAM_ERROR (-1)
 #define MAX_SIZE 128
 
-int Insert(SeatPosition Head, char* filename,float *price) {
+int Insert(SeatPosition Head, char* filename, float *price) {
 	char SeatName[4] = { 0 }, SeatState[20] = { 0 };
 
 	SeatPosition P = Head;
@@ -42,5 +43,67 @@ int Insert(SeatPosition Head, char* filename,float *price) {
 		}
 	}
 	fclose(fp);
+	return EXIT_SUCCESS;
+}
+
+int RewriteFile(SeatPosition head, char* filename, float price) {
+	FILE* fp = NULL;
+	fp = fopen(filename, "w+");
+	int counter = 0;
+	if (NULL == fp) {
+		perror("Error opening file!");
+		return -1;
+	}
+	fprintf(fp, "%.2f \n", price);
+	while (head->Next != NULL) {
+		fprintf(fp, "%s %s ", head->Next->SeatName, head->Next->SeatState);
+		head = head->Next;
+		counter++;
+		if (counter % 4 == 0) {
+			fprintf(fp, "\n");
+		}
+	}
+	fclose(fp);
+	return EXIT_SUCCESS;
+}
+
+
+
+int PrintSeat(SeatPosition temp) {
+
+	int counter = 0;
+
+	while (temp->Next != NULL) {
+		printf(" %-4s %-20s ", temp->Next->SeatName, temp->Next->SeatState);
+		temp = temp->Next;
+		counter++;
+		if (counter % 4 == 0) {
+			printf("\n");
+		}
+	}
+
+	return EXIT_SUCCESS;
+}
+
+float percentageFull(SeatPosition head) {
+	int taken = 0;
+	int counter = 0;
+	while (head->Next != NULL) {
+		if (strcmp(head->SeatState, "<Empty>") != 0) {
+			taken++;
+		}
+		counter++;
+		head = head->Next;
+	}
+	return ((float)taken / counter) * 100;
+}
+
+int FreeList(SeatPosition head) {
+	SeatPosition temp;
+	while (head->Next != NULL) {
+		temp = head->Next;
+		head->Next = head->Next->Next;
+		free(temp);
+	}
 	return EXIT_SUCCESS;
 }

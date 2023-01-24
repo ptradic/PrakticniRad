@@ -24,12 +24,18 @@
     <ClCompile Include="Seat.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HourList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LogIn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Seat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HourList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

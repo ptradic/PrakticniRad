@@ -12,3 +12,4 @@ aaaaa lozinka123
 zoran123 sifra123
 newaccount password123
 newaccount123 newpassword
+pjero sifra0
