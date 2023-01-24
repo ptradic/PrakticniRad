@@ -139,15 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HourList.c" />
     <ClCompile Include="LogIn.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Seat.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="City.h" />
-    <ClInclude Include="City_Route.h" />
+    <ClInclude Include="HourList.h" />
     <ClInclude Include="LogIn.h" />
-    <ClInclude Include="Route.h" />
     <ClInclude Include="Seat.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

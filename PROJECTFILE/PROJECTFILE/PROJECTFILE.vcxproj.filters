@@ -24,6 +24,9 @@
     <ClCompile Include="Seat.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HourList.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LogIn.h">
@@ -32,13 +35,7 @@
     <ClInclude Include="Seat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="City.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Route.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="City_Route.h">
+    <ClInclude Include="HourList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

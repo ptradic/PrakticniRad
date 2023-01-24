@@ -1,13 +1,4 @@
-6.00 
-A1 ivo A2 <Empty> A3 luka A4 ivo 
-A5 ivo A6 <Empty> A7 goran A8 ivo 
-A9 <Empty> A10 <Empty> A11 <Empty> A12 ivo 
-B1 ivo B2 <Empty> B3 <Empty> B4 ante 
-B5 <Empty> B6 <Empty> B7 <Empty> B8 ivo 
-B9 <Empty> B10 <Empty> B11 <Empty> B12 ivo 
-C1 petar C2 goran00 C3 <Empty> C4 <Empty> 
-C5 <Empty> C6 <Empty> C7 <Empty> C8 <Empty> 
-C9 <Empty> C10 <Empty> C11 ivo C12 <Empty> 
-D1 ivo D2 <Empty> D3 <Empty> D4 ivo 
-D5 <Empty> D6 <Empty> D7 <Empty> D8 <Empty> 
-D9 <Empty> D10 <Empty> D11 ivo D12 ivo 
+08:00 08StZd.txt
+12:00 12StZd.txt
+16:00 16StZd.txt
+20:00 20StZd.txt
