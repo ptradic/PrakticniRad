@@ -1,7 +1,0 @@
-20.00 
-A1 <Empty> A2 ivo A3 ivo A4 <Empty> 
-A5 <Empty> A6 ivo A7 noviusername A8 <Empty> 
-A9 <Empty> A10 ivo A11 goran A12 <Empty> 
-B1 <Empty> B2 <Empty> B3 ivo B4 <Empty> 
-B5 <Empty> B6 <Empty> B7 <Empty> B8 <Empty> 
-B9 <Empty> B10 <Empty> B11 <Empty> B12 <Empty> 

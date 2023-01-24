@@ -1,9 +1,0 @@
-﻿  LogIn.c
-C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(79,77): warning C4013: 'AdjustedPrice' undefined; assuming extern returning int
-C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(79,12): warning C4477: 'printf' : format string '%.2f' requires an argument of type 'double', but variadic argument 1 has type 'int'
-C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(90,17): warning C4013: 'TakeSeat' undefined; assuming extern returning int
-C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(230,10): warning C4013: 'getch' undefined; assuming extern returning int
-C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(330,11): warning C4477: 'printf' : format string '%.2f' requires an argument of type 'double', but variadic argument 3 has type 'int'
-C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(205): warning C4715: 'FindElementByUser': not all control paths return a value
-C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(295): warning C4715: 'FindLoginUser': not all control paths return a value
-  PROJECTFILE.vcxproj -> C:\Users\Pjero\Desktop\PrakticniRad\PROJECTFILE\x64\Debug\PROJECTFILE.exe
