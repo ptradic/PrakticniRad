@@ -1,0 +1,13 @@
+10.00 
+A1 <Empty> A2 <Empty> A3 <Empty> A4 <Empty> 
+A5 <Empty> A6 ivo A7 <Empty> A8 <Empty> 
+A9 ivo A10 ivo A11 ivo A12 <Empty> 
+B1 ivo B2 ivo B3 <Empty> B4 <Empty> 
+B5 ivo B6 ivo B7 <Empty> B8 <Empty> 
+B9 ivo B10 ivo B11 ivo B12 <Empty> 
+C1 <Empty> C2 <Empty> C3 <Empty> C4 <Empty> 
+C5 <Empty> C6 <Empty> C7 <Empty> C8 <Empty> 
+C9 <Empty> C10 newaccount C11 <Empty> C12 <Empty> 
+D1 <Empty> D2 newaccount D3 <Empty> D4 <Empty> 
+D5 <Empty> D6 <Empty> D7 <Empty> D8 <Empty> 
+D9 <Empty> D10 <Empty> D11 <Empty> D12 <Empty> 
