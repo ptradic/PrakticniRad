@@ -1,5 +1,5 @@
 10.00 
-A1 <Empty> A2 <Empty> A3 <Empty> A4 <Empty> 
+A1 pjero A2 <Empty> A3 <Empty> A4 <Empty> 
 A5 <Empty> A6 <Empty> A7 <Empty> A8 <Empty> 
 A9 ivo A10 ivo A11 ivo A12 <Empty> 
 B1 <Empty> B2 <Empty> B3 <Empty> B4 <Empty> 

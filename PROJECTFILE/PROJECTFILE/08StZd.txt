@@ -1,6 +1,6 @@
-10.00 
-A1 <Empty> A2 newaccount A3 <Empty> A4 <Empty> 
-A5 <Empty> A6 newaccount A7 <Empty> A8 <Empty> 
+6.00 
+A1 pjero A2 newaccount A3 <Empty> A4 <Empty> 
+A5 pjero A6 newaccount A7 <Empty> A8 <Empty> 
 A9 <Empty> A10 <Empty> A11 <Empty> A12 <Empty> 
 B1 <Empty> B2 <Empty> B3 <Empty> B4 <Empty> 
 B5 <Empty> B6 <Empty> B7 <Empty> B8 <Empty> 

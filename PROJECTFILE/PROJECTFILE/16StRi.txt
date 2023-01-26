@@ -1,4 +1,4 @@
-10.00 
+8.00
 A1 <Empty> A2 <Empty> A3 <Empty> A4 <Empty> 
 A5 <Empty> A6 <Empty> A7 <Empty> A8 <Empty> 
 A9 <Empty> A10 <Empty> A11 <Empty> A12 <Empty> 

@@ -1,10 +1,10 @@
-10.00 
-A1 <Empty> A2 <Empty> A3 <Empty> A4 <Empty> 
-A5 <Empty> A6 <Empty> A7 <Empty> A8 <Empty> 
+6.00 
+A1 <Empty> A2 newaccount A3 newaccount A4 ivo 
+A5 <Empty> A6 <Empty> A7 newaccount A8 <Empty> 
 A9 ivo A10 ivo A11 ivo A12 <Empty> 
-B1 <Empty> B2 <Empty> B3 <Empty> B4 <Empty> 
-B5 <Empty> B6 <Empty> B7 <Empty> B8 <Empty> 
-B9 <Empty> B10 <Empty> B11 ivo B12 newaccount 
+B1 ivo B2 <Empty> B3 <Empty> B4 <Empty> 
+B5 josip B6 <Empty> B7 <Empty> B8 <Empty> 
+B9 josip B10 <Empty> B11 ivo B12 newaccount 
 C1 <Empty> C2 <Empty> C3 ivo C4 newaccount 
 C5 <Empty> C6 <Empty> C7 ivo C8 <Empty> 
 C9 <Empty> C10 newaccount C11 <Empty> C12 newaccount 

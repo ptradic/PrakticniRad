@@ -1,6 +1,6 @@
 ﻿  Main.c
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(121,7): warning C4013: 'getch' undefined; assuming extern returning int
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(126,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(129,22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(132,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  PROJECTFILE.vcxproj -> C:\Users\Puizina\source\repos\PROJECTFILE\Debug\PROJECTFILE.exe
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(375,2): warning C4013: 'getch' undefined; assuming extern returning int
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(382,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(385,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(388,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  PROJECTFILE.vcxproj -> C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\Debug\PROJECTFILE.exe

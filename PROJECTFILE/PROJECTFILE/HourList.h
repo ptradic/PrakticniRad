@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Seat.h"
-
 typedef struct HourList* HourPosition;
 typedef struct HourList {
 	char startingHour[15];
@@ -9,7 +7,7 @@ typedef struct HourList {
 	HourPosition Next;
 }HourList;
 
-int InsertHours(HourPosition Head, char* filename);
 int PrintHours(HourPosition head);
 HourPosition FindHours(HourPosition head, char* timeselect);
 int FreeHourList(HourPosition head);
+int InsertHours(HourPosition Head, char* filename);
