@@ -1,0 +1,13 @@
+10.00 
+A1 josip A2 josip A3 josip A4 josip 
+A5 josip A6 josip A7 josip A8 josip 
+A9 josip A10 josip A11 josip A12 petar 
+B1 josip B2 josip B3 josip B4 josip 
+B5 josip B6 josip B7 newaccount B8 petar 
+B9 <Empty> B10 ivo B11 goran B12 petar 
+C1 <Empty> C2 goran C3 goran C4 ivo 
+C5 goran C6 goran C7 ivo C8 ivo 
+C9 ivo C10 ivo C11 ivo C12 ivo 
+D1 ivo D2 ivo D3 ivo D4 ivo 
+D5 ivo D6 <Empty> D7 ivo D8 ivo 
+D9 ivo D10 <Empty> D11 ivo D12 ivo 
