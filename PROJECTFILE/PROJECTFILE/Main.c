@@ -79,7 +79,7 @@ int AdminMenu(Position loggedIn) {
 		system("cls");
 		printf("*************************************************************************\n");
 		printf("Welcome to admin menu! \nMenu: \n");
-		printf("1-Admin View\n2-Adjust price\n0-Exit\n");
+		printf("1-Admin View\n2-Adjust price\n3-Empty bus\n0-Exit\n");
 		printf("*************************************************************************\n");
 		printf("Choose your next action: ");
 		scanf(" %c", &choice);
@@ -93,11 +93,131 @@ int AdminMenu(Position loggedIn) {
 		case '2':
 			AdminAdjustPrice();
 			break;
+		case '3':
+			EmptyBus();
+			break;
 		default:
 			printf("Wrong input, try again!\n");
 		}
 
 	} while (choice != '0');
+
+	return EXIT_SUCCESS;
+}
+
+int EmptyBus()
+{
+	char BusArray[NUMBER_OF_ROUTES][10] = { 0 };
+	char filetemp[NUMBER_OF_ROUTES][10] = { 0 };
+	char timeselect[10] = { 0 };
+	char proceed[10] = { 0 };
+	
+	float newPrice = 0;
+	float percentage = 0;
+	float price = 0;
+
+	int choice = 0;
+	int i = 0;
+
+	HourList Head = { .HourFilename = "",.startingHour = "",.Next = NULL };
+	Seat SeatHead = { .SeatName = "",.SeatState = "" ,.Next = NULL };
+	SeatPosition head = &SeatHead;
+	HourPosition hourHead = &Head;
+	HourPosition selected;
+
+	FILE* fp = NULL;
+	fp = fopen("autobusi.txt", "r");
+
+	if (!fp) {
+		perror("Error opening bus file!");
+		return PROGRAM_ERROR;
+	}
+
+	while (!feof(fp)) {
+		fscanf(fp, "%s %s", BusArray[i], filetemp[i]);
+		i++;
+	}
+	fclose(fp);
+	do {
+		system("cls");
+
+		printf("These are the available routes: \n");
+
+		for (int i = 0; i < NUMBER_OF_ROUTES; i++) {
+			printf("%d %s\n", i + 1, BusArray[i]);
+		}
+
+		printf("Choose your route or press 0 to exit: \n");
+		scanf(" %d", &choice);
+
+		if (choice == 0) {
+			printf("Exited to main menu!\n");
+			break;
+		}
+
+		if (choice <= NUMBER_OF_ROUTES) {
+
+			InsertHours(hourHead, filetemp[choice - 1]);
+			system("cls");
+			printf("These are the available starting horus for the chosen route: \n");
+			PrintHours(hourHead->Next);
+
+			do {
+				printf("Enter the time where you would like to change the price: ");
+				scanf(" %s", timeselect);
+
+			} while ((selected = FindHours(hourHead, timeselect)) == NULL);
+
+			Insert(head, selected->HourFilename, &price);
+
+			RewriteEmptyBus(head, selected->HourFilename, &price);
+
+			printf("Bus seats set to empty, ticket price set to 0.00\n");
+			printf("Press any key to continue...\n");
+			getch();
+
+			FreeList(head);
+			FreeHourList(hourHead);
+			puts("\n");
+
+		}
+
+		else {
+			printf("Wrong input!\n");
+		}
+
+	} while (choice != 0);
+
+	return EXIT_SUCCESS;
+}
+
+int RewriteEmptyBus(SeatPosition head, char* filename, float* price) {
+	int counter = 0;
+
+	FILE* fp = NULL;
+	fp = fopen(filename, "w+");
+
+	if (NULL == fp) {
+
+		perror("Error opening file!");
+		return PROGRAM_ERROR;
+	}
+
+	fprintf(fp, "%.2f \n", price);
+
+	while (head->Next != NULL) {
+		strcpy(head->Next->SeatState, "<Empty>");
+		fprintf(fp, "%s %s ", head->Next->SeatName, head->Next->SeatState);
+		head = head->Next;
+		counter++;
+
+		if (counter % 4 == 0) {
+			fprintf(fp, "\n");
+		}
+
+	}
+
+	fclose(fp);
 
 	return EXIT_SUCCESS;
 }
@@ -292,6 +412,9 @@ int ReservationMenu(Position loggedIn) {
 				}
 
 			}
+
+			printf("Press any key to continue...\n");
+			getch();
 
 			system("cls");
 			printf("New status: \n");
