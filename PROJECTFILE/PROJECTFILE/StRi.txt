@@ -1,4 +1,0 @@
-08:00 08StRi.txt
-12:00 12StRi.txt
-16:00 16StRi.txt
-20:00 20StRi.txt

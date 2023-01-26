@@ -1,5 +1,0 @@
-08:00 08ZgSt.txt
-12:00 12ZgSt.txt
-17:30 1730ZgSt.txt
-20:00 20ZgSt.txt
-23:00 23ZgSt.txt
