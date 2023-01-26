@@ -1,0 +1,11 @@
+admin pass
+ivo sifra1
+ante sifra2
+josip sifra3
+petar sifra4 
+luka sifra5 
+goran lozinka7
+goran00 sifra123
+
+newaccount password123
+noviracun pass123
