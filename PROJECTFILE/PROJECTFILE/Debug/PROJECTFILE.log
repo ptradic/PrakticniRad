@@ -1,6 +1,0 @@
-﻿  Main.c
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(119,7): warning C4013: 'getch' undefined; assuming extern returning int
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(124,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(127,22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(130,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  PROJECTFILE.vcxproj -> C:\Users\Puizina\source\repos\PROJECTFILE\Debug\PROJECTFILE.exe

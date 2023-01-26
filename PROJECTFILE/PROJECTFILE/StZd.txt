@@ -1,4 +1,0 @@
-08:00 08StZd.txt
-12:00 12StZd.txt
-16:00 16StZd.txt
-20:00 20StZd.txt
