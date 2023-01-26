@@ -1,5 +1,5 @@
 7.00 
-A1 <Empty> A2 josip A3 josip A4 <Empty> 
+A1 pjero A2 josip A3 josip A4 <Empty> 
 A5 ivo A6 ivo A7 <Empty> A8 <Empty> 
 A9 ivo A10 newaccount A11 josip A12 <Empty> 
 B1 <Empty> B2 ivo B3 <Empty> B4 <Empty> 

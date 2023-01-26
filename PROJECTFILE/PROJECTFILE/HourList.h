@@ -7,7 +7,6 @@ typedef struct HourList {
 	HourPosition Next;
 }HourList;
 
-
 int PrintHours(HourPosition head);
 HourPosition FindHours(HourPosition head, char* timeselect);
 int FreeHourList(HourPosition head);

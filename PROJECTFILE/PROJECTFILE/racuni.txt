@@ -9,3 +9,4 @@ goran00 sifra123
 
 newaccount password123
 noviracun pass123
+pjero sifra0

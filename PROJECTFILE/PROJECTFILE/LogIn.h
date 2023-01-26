@@ -1,6 +1,10 @@
 #pragma once
 
-#define MAX_SIZE 50
+#include "HourList.h"
+#include "Seat.h"
+
+#define MAX_SIZE 64
+#define NUMBER_OF_ROUTES 5	
 
 typedef struct _BinarySearchTree* Position;
 typedef struct _BinarySearchTree {
@@ -21,3 +25,4 @@ int INorderPrint(Position current);
 int AddNewAccountToList(Position head, char* username, char* password);
 Position FindLoginUser(Position current, char* username);
 int DeleteAll(Position current);
+

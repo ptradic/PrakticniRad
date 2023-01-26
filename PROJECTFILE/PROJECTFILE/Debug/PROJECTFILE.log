@@ -1,6 +1,14 @@
-﻿  Main.c
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(106,7): warning C4013: 'getch' undefined; assuming extern returning int
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(111,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(114,22): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-C:\Users\Puizina\source\repos\PROJECTFILE\PROJECTFILE\Main.c(117,21): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  PROJECTFILE.vcxproj -> C:\Users\Puizina\source\repos\PROJECTFILE\Debug\PROJECTFILE.exe
+﻿  HourList.c
+  LogIn.c
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(46,26): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(150,5): warning C4013: 'getch' undefined; assuming extern returning int
+  Main.c
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(238,2): warning C4013: 'getch' undefined; assuming extern returning int
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(245,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(248,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\Main.c(251,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Seat.c
+  Generating Code...
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(119): warning C4715: 'FindElementByUser': not all control paths return a value
+C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\PROJECTFILE\LogIn.c(226): warning C4715: 'FindLoginUser': not all control paths return a value
+  PROJECTFILE.vcxproj -> C:\Users\Pjero\Desktop\Main\PrakticniRad\PROJECTFILE\Debug\PROJECTFILE.exe
